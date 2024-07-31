@@ -20,6 +20,6 @@ Add this to ~/.config/yazi/yazi.toml, `below the exists [plugin] modules`, like 
 [plugin]
 
 fetchers = [
-	{ id = "mime-ext", name = "*", run = "mime-ext",if = "!mime", prio = "high" },
+	{ id = "mime-ext", name = "*", run = "mime-ext", prio = "high" },
 ]
 ```
