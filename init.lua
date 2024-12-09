@@ -1419,11 +1419,11 @@ local function match_mimetype(s)
 	end
 end
 
-function M:fetch()
+function M:fetch(job)
 	local mimes = {}
 	local unmatch_ext_urls = {}
 
-	for _, file in ipairs(self.files) do
+	for _, file in ipairs(job.files) do
 	  local url = tostring(file.url)
 
 	  local ext = tostring(file.name):match("^.+%.(.+)$")
@@ -1470,6 +1470,7 @@ function M:fetch()
 	end
 
 	if #mimes then
+		ya.manager_emit("update_mimes", { updates = mimes })
 		ya.manager_emit("update_mimetype", { updates = mimes })
 	  return 3
 	end
